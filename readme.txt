@@ -1,6 +1,6 @@
 === Snow Storm ===
 Contributors: wnorris
-Tags: snow, winter, holidy
+Tags: snow, winter, holiday
 Requires at least: 2.7
 Tested up to: 2.7
 Stable tag: 1.0

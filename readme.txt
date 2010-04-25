@@ -1,5 +1,5 @@
 === Snow Storm ===
-Contributors: wnorris
+Contributors: willnorris
 Tags: snow, winter, holiday
 Requires at least: 2.7
 Tested up to: 2.7

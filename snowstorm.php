@@ -13,6 +13,9 @@ add_action('wp', 'snowstorm_js');
 add_action('admin_menu', 'snowstorm_admin_menu');
 add_action('admin_init', 'snowstorm_admin_init');
 
+/**
+ * Activate the plugin.
+ */
 function snowstorm_activate() {
 	$snowstorm = array(
 		'max' => 128,
@@ -30,8 +33,12 @@ function snowstorm_activate() {
 	update_option('snowstorm', $snowstorm);
 }
 
+
+/**
+ * Uninstall the plugin.
+ */
 function snowstorm_uninstall() {
-	delete_option('snowstorm');
+  delete_option('snowstorm');
 }
 
 
@@ -41,8 +48,9 @@ function snowstorm_js() {
 
 }
 
+
 function snowstorm_admin_init() {
-	register_setting('snowstorm', 'snowstorm');
+  register_setting('snowstorm', 'snowstorm');
 }
 
 
@@ -51,72 +59,72 @@ function snowstorm_admin_menu() {
 }
 
 function snowstorm_options() {
-	$snowstorm = get_option('snowstorm');
+  $snowstorm = get_option('snowstorm');
 
-	screen_icon('snowstorm');
+  screen_icon('snowstorm');
 ?>
-	<style type="text/css">
-		#icon-snowstorm { background-image: url("<?php echo plugins_url('snowstorm/images/icon.png'); ?>"); }
-	</style>
+  <style type="text/css">
+    #icon-snowstorm { background-image: url("<?php echo plugins_url('snowstorm/images/icon.png'); ?>"); }
+  </style>
 
-	<div class="wrap">
-		<form method="post" action="options.php">
-			<h2><?php _e('Snowstorm Options'); ?></h2>
-			<table class="form-table">
-				<tr valign="top">
+  <div class="wrap">
+    <form method="post" action="options.php">
+      <h2><?php _e('Snowstorm Options'); ?></h2>
+      <table class="form-table">
+        <tr valign="top">
                     <th scope="row"><label for="max"><?php _e('Max Snowflakes') ?></label></th>
                     <td>
-						<input type="text" name="snowstorm[max]" id="max" value="<?php echo $snowstorm['max'] ?>" class="small-text" />
-							<span class="setting-description"><?php _e('The maximum number of snowflakes. (default: 128)') ?></span>
-					</td>
-				</tr>
+            <input type="text" name="snowstorm[max]" id="max" value="<?php echo $snowstorm['max'] ?>" class="small-text" />
+              <span class="setting-description"><?php _e('The maximum number of snowflakes. (default: 128)') ?></span>
+          </td>
+        </tr>
 
-				<tr valign="top">
+        <tr valign="top">
                     <th scope="row"><label for="active"><?php _e('Max Active') ?></label></th>
                     <td>
-						<input type="text" name="snowstorm[active]" id="active" value="<?php echo $snowstorm['active'] ?>" class="small-text" />
-							<span class="setting-description"><?php _e('The maximum number of "falling" snowflakes. (default: 64)') ?></span>
-					</td>
-				</tr>
+            <input type="text" name="snowstorm[active]" id="active" value="<?php echo $snowstorm['active'] ?>" class="small-text" />
+              <span class="setting-description"><?php _e('The maximum number of "falling" snowflakes. (default: 64)') ?></span>
+          </td>
+        </tr>
 
-				<tr valign="top">
+        <tr valign="top">
                     <th scope="row"><label for="velocity"><?php _e('Speed') ?></label></th>
                     <td>
-						<input type="text" name="snowstorm[velocity]" id="velocity" value="<?php echo $snowstorm['velocity'] ?>" class="small-text" />
-							<span class="setting-description"><?php _e('The maximum velocity of snowflakes. (default: 2.5)') ?></span>
-					</td>
-				</tr>
+            <input type="text" name="snowstorm[velocity]" id="velocity" value="<?php echo $snowstorm['velocity'] ?>" class="small-text" />
+              <span class="setting-description"><?php _e('The maximum velocity of snowflakes. (default: 2.5)') ?></span>
+          </td>
+        </tr>
 
-				<tr valign="top">
+        <tr valign="top">
                     <th scope="row"><label for="size"><?php _e('Size') ?></label></th>
                     <td>
-						<input type="text" name="snowstorm[size]" id="size" value="<?php echo $snowstorm['size'] ?>" class="small-text" />
-							<span class="setting-description"><?php _e('The size (in pixels) of each snowflake image. (default: 5)') ?></span>
-					</td>
-				</tr>
+            <input type="text" name="snowstorm[size]" id="size" value="<?php echo $snowstorm['size'] ?>" class="small-text" />
+              <span class="setting-description"><?php _e('The size (in pixels) of each snowflake image. (default: 5)') ?></span>
+          </td>
+        </tr>
 
-				<tr valign="top">
+        <tr valign="top">
                     <th scope="row"><label for="bottom"><?php _e('Bottom') ?></label></th>
                     <td>
-						<input type="text" name="snowstorm[bottom]" id="bottom" value="<?php echo $snowstorm['bottom'] ?>" class="small-text" />
-							<span class="setting-description"><?php _e('Limits the bottom coordinate of the snow. (default: 0)') ?></span>
-					</td>
-				</tr>
+            <input type="text" name="snowstorm[bottom]" id="bottom" value="<?php echo $snowstorm['bottom'] ?>" class="small-text" />
+              <span class="setting-description"><?php _e('Limits the bottom coordinate of the snow. (default: 0)') ?></span>
+          </td>
+        </tr>
 
-				<tr valign="top">
+        <tr valign="top">
                     <th scope="row"><label for="collect"><?php _e('Collect') ?></label></th>
                     <td>
-						<label for="collect"><input type="checkbox" name="snowstorm[collect]" id="collect" <?php checked(true, $snowstorm['collect']) ?> />
-						<?php _e('Enables the snow to pile up (slowly) at the bottom of the window.') ?></label>
+            <label for="collect"><input type="checkbox" name="snowstorm[collect]" id="collect" <?php checked(true, $snowstorm['collect']) ?> />
+            <?php _e('Enables the snow to pile up (slowly) at the bottom of the window.') ?></label>
                     </td>
                 </tr>
-			</table>
+      </table>
 
-			<?php settings_fields('snowstorm'); ?>
+      <?php settings_fields('snowstorm'); ?>
 
-			<p class="submit"> <input type="submit" name="Submit" class="button-primary" value="Save Changes" /> </p>
-		</form>
-	</div>
+      <p class="submit"> <input type="submit" name="Submit" class="button-primary" value="Save Changes" /> </p>
+    </form>
+  </div>
 <?php
 }
 

@@ -9,8 +9,7 @@
 
 register_activation_hook('snowstorm/snowstorm.php', 'snowstorm_activate');
 register_uninstall_hook('snowstorm/snowstorm.php', 'snowstorm_uninstall');
-add_action('init', 'snowstorm_js');
-add_action('parse_request', 'snowstorm_parse_request');
+add_action('wp', 'snowstorm_js');
 add_action('admin_menu', 'snowstorm_admin_menu');
 add_action('admin_init', 'snowstorm_admin_init');
 
@@ -37,18 +36,9 @@ function snowstorm_uninstall() {
 
 
 function snowstorm_js() {
-	$js = add_query_arg('snowstorm_js', '1', site_url());
-	if (is_admin()) $js = add_query_arg('admin', '1', $js);
-	wp_enqueue_script('snowstorm', $js);
+  wp_enqueue_script('snowstorm', plugins_url('snowstorm/snowstorm.js'), array(), false, true);
 }
 
-function snowstorm_parse_request() {
-	if (array_key_exists('snowstorm_js', $_REQUEST)) {
-		header('Content-Type: text/javascript');
-		$snowstorm = get_option('snowstorm');
-		require_once dirname(__FILE__) . '/javascript.php';
-		exit;
-	}
 }
 
 function snowstorm_admin_init() {
@@ -57,7 +47,7 @@ function snowstorm_admin_init() {
 
 
 function snowstorm_admin_menu() {
-	$hookname = add_theme_page(__('Snowstorm'), __('Snowstorm'), 8, 'snowstorm', 'snowstorm_options' );
+  $hookname = add_theme_page(__('Snowstorm'), __('Snowstorm'), 'edit_theme_options', 'snowstorm', 'snowstorm_options' );
 }
 
 function snowstorm_options() {

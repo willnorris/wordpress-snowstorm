@@ -4,6 +4,8 @@ Tags: snow, winter, holiday
 Requires at least: 2.7
 Tested up to: 2.7
 Stable tag: 1.0
+License: BSD-3-Clause
+License URI: http://opensource.org/licenses/BSD-3-Clause
 
 Adds Javascript snow effect to your blog, thanks to [Scott Schiller][].  This is the same effect available on WordPress.com blogs.
 

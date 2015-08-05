@@ -5,6 +5,8 @@
  Author: Will Norris
  Author URI: http://willnorris.com
  Version: trunk
+ License: BSD-3-Clause
+ License URI: http://opensource.org/licenses/BSD-3-Clause
  */
 
 register_activation_hook('snowstorm/snowstorm.php', 'snowstorm_activate');
